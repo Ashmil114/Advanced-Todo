@@ -1,14 +1,14 @@
 import NavBar from "../Components/Shared/NavBar";
 import BreadCrumbs from "../Components/UI/BreadCrumbs";
-import ListTable from "../Components/UI/ListTable";
+import TodoDetailCard from "../Components/UI/TodoDetailCard";
 
 const TodoDetails = () => {
   return (
-    <div className="h-screen">
+    <div className="">
       <NavBar />
-      <div className="dy-container">
+      <div className="dy-container ">
         <BreadCrumbs />
-        <ListTable />
+        <TodoDetailCard />
       </div>
     </div>
   );

@@ -16,5 +16,5 @@ body{
 }
 
 .card-description {
-    @apply text-xs text-slate-600
+    @apply text-xs text-slate-600 
 }
