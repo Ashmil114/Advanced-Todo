@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+    background-color: #eee;
+}
+
+.dy-container {
+    @apply md:px-16 px-8
+}
+
+.title {
+    @apply text-lg font-semibold text-slate-500 my-5
+}
+
+.card-description {
+    @apply text-xs text-slate-600
+}
