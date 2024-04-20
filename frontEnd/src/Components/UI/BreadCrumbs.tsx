@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const BreadCrumbs = () => {
   return (
-    <div className="text-sm breadcrumbs my-10 ">
+    <div className="text-sm breadcrumbs my-10">
       <ul>
         <li>
           <Link to="/" className="">

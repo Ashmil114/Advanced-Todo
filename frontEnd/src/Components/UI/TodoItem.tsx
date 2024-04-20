@@ -1,20 +1,32 @@
+import { useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { MdOutlineDelete } from "react-icons/md";
 
 const TodoItem = () => {
+  const [checked, setChecked] = useState<boolean>(false);
   return (
     <div className="flex justify-between mx-10 my-5 items-center ">
       <div className="w-[80%] flex gap-5  items-start">
         <input
           type="checkbox"
           className=" h-10 w-10 "
-          onChange={() => console.log("checked")}
+          onChange={() => {
+            setChecked(!checked);
+          }}
         />
         <div className="flex flex-col gap-2">
-          <h1 className="font-medium text-lg text-slate-800 ">
+          <h1
+            className={`font-medium text-lg text-slate-800 ${
+              checked ? "line-through" : null
+            }`}
+          >
             Todo Example One
           </h1>
-          <p className="text-[14px] text-slate-600">
+          <p
+            className={`text-[14px] text-slate-600 ${
+              checked ? "line-through" : null
+            }`}
+          >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
             mollitia tempora debitis dolorum laudantium corrupti, repudiandae
             perspiciatis et impedit unde perferendis ab hic, ullam odit corporis
