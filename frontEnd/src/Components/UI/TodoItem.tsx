@@ -5,8 +5,8 @@ import { MdOutlineDelete } from "react-icons/md";
 const TodoItem = () => {
   const [checked, setChecked] = useState<boolean>(false);
   return (
-    <div className="flex justify-between mx-10 my-5 items-center ">
-      <div className="w-[80%] flex gap-5  items-start">
+    <div className="flex lg:justify-between md:mx-10 my-5 items-center max-md:flex-wrap">
+      <div className="lg:w-[80%] flex gap-5  items-start ">
         <input
           type="checkbox"
           className=" h-10 w-10 "
@@ -16,14 +16,14 @@ const TodoItem = () => {
         />
         <div className="flex flex-col gap-2">
           <h1
-            className={`font-medium text-lg text-slate-800 ${
+            className={`font-medium text-lg max-sm:text-xl text-slate-800 ${
               checked ? "line-through" : null
             }`}
           >
             Todo Example One
           </h1>
           <p
-            className={`text-[14px] text-slate-600 ${
+            className={`text-[14px] text-slate-600 max-sm:text-justify max-sm:text-xs ${
               checked ? "line-through" : null
             }`}
           >
@@ -35,7 +35,7 @@ const TodoItem = () => {
           <p className="text-[14px] text-slate-700">Today</p>
         </div>
       </div>
-      <div className="flex gap-5">
+      <div className="flex gap-5  max-sm:w-full max-sm:justify-end">
         <FaRegEdit className="text-2xl text-green-500 cursor-pointer" />
         <MdOutlineDelete className="text-2xl text-red-500 cursor-pointer" />
       </div>
