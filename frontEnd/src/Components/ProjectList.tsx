@@ -1,4 +1,5 @@
 import SideList from "./SideList";
+import ModelForm from "./UI/ModelForm";
 import ProjectCard from "./UI/ProjectCard";
 import { MdAddCircle } from "react-icons/md";
 
@@ -8,9 +9,13 @@ export const ProjectList = () => {
       {/* Side List */}
       <div className="lg:w-[25%] h-fit  p-6 rounded-lg card  bg-base-100 shadow-xl">
         <div className="w-full flex justify-end mb-5 items-center gap-2">
-          <h1 className="btn bg-blue-500 text-white hover:bg-blue-400">
+          <label
+            className="btn bg-blue-500 text-white hover:bg-blue-400"
+            htmlFor="my_modal_6"
+          >
             New Project
-          </h1>
+          </label>
+          <ModelForm />
           <a
             href=""
             data-tip="create new project"
