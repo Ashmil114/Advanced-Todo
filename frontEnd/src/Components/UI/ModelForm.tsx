@@ -17,13 +17,12 @@ const ModelForm = ({ data, update }: ModelType) => {
   const ProjectHandler = () => {
     console.log(input);
     setInput("");
-    navigate("more/1");
+    navigate("/more/1");
   };
 
   const ProjectUpdateHandler = () => {
     console.log(input);
     setInput(input);
-    navigate("");
   };
 
   return (
@@ -43,6 +42,7 @@ const ModelForm = ({ data, update }: ModelType) => {
               }}
             />
           </label>
+
           <div className="modal-action">
             <label
               htmlFor="my_modal_6"

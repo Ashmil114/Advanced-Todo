@@ -24,9 +24,6 @@ const TodoDetailCard = () => {
             <ModelForm data="data" update={true} />
           </div>
           <div className="flex items-center gap-3 max-sm:w-full max-sm:justify-around max-sm:mt-5">
-            {/* <h1 className="btn bg-blue-500 text-white hover:bg-blue-400 max-sm:btn-sm">
-              Add New Todo
-            </h1> */}
             <label
               htmlFor="my_modal_7"
               className="btn bg-blue-500 text-white hover:bg-blue-400 max-sm:btn-sm"

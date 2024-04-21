@@ -1,8 +1,11 @@
+import { useCookies } from "react-cookie";
+
 type NaveType = {
   name: string;
 };
 
 const NavBar = ({ name }: NaveType) => {
+  const token = useCookies(["my-token"]);
   return (
     <div className="navbar bg-base-100 dy-container h-[12%]">
       <div className="flex-1">
@@ -32,7 +35,7 @@ const NavBar = ({ name }: NaveType) => {
               <a className="justify-between">Profile</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a onClick={() => token[2]("my-token")}>Logout</a>
             </li>
           </ul>
         </div>

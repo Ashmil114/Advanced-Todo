@@ -5,7 +5,7 @@ const BreadCrumbs = () => {
     <div className="text-sm breadcrumbs my-10">
       <ul>
         <li>
-          <Link to="/" className="">
+          <Link to="/home" className="">
             Home
           </Link>
         </li>
