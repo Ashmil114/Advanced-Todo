@@ -1,8 +1,14 @@
-const NavBar = () => {
+type NaveType = {
+  name: string;
+};
+
+const NavBar = ({ name }: NaveType) => {
   return (
     <div className="navbar bg-base-100 dy-container h-[12%]">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">TODO APP</a>
+        <a className="btn btn-ghost text-xl font-bold ">
+          <span className="text-blue-500">TODO</span> APP
+        </a>
       </div>
       <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">
@@ -13,8 +19,8 @@ const NavBar = () => {
           >
             <div className="w-10 rounded-full">
               <img
-                alt="Tailwind CSS Navbar component"
-                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                alt="Avatar"
+                src={`https://api.multiavatar.com/${name}.png`}
               />
             </div>
           </div>

@@ -15,7 +15,8 @@ export const ProjectList = () => {
           >
             New Project
           </label>
-          <ModelForm />
+          {/* Project Add Button */}
+          <ModelForm data="" update={false} />
           <a
             href=""
             data-tip="create new project"

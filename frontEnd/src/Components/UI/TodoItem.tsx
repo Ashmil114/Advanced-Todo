@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { MdOutlineDelete } from "react-icons/md";
+import ModelAddTodo from "../ModelAddTodo";
 
 const TodoItem = () => {
   const [checked, setChecked] = useState<boolean>(false);
@@ -36,8 +37,12 @@ const TodoItem = () => {
         </div>
       </div>
       <div className="flex gap-5  max-sm:w-full max-sm:justify-end">
-        <FaRegEdit className="text-2xl text-green-500 cursor-pointer" />
+        <label htmlFor="my_modal_8" className="">
+          <FaRegEdit className="text-2xl text-green-500 cursor-pointer" />
+        </label>
         <MdOutlineDelete className="text-2xl text-red-500 cursor-pointer" />
+        {/* Update Button */}
+        <ModelAddTodo title="Todo 1" desc="djkd" add={false} h="my_modal_8" />
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import TodoDetailCard from "../Components/UI/TodoDetailCard";
 const TodoDetails = () => {
   return (
     <div className="">
-      <NavBar />
+      <NavBar name="ashmil" />
       <div className="dy-container ">
         <BreadCrumbs />
         <TodoDetailCard />

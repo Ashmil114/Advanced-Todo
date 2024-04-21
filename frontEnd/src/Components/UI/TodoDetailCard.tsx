@@ -2,6 +2,8 @@ import TodoItem from "./TodoItem";
 // import { IoSettings } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
 import { MdOutlineDelete } from "react-icons/md";
+import ModelForm from "./ModelForm";
+import ModelAddTodo from "../ModelAddTodo";
 
 const TodoDetailCard = () => {
   return (
@@ -12,14 +14,27 @@ const TodoDetailCard = () => {
           <div className="flex items-center gap-5 max-sm:justify-between max-sm:w-full">
             <h1 className="text-3xl font-semibold ">Project 1</h1>
             <div className="flex gap-3">
-              <FaRegEdit className="text-2xl text-blue-500 cursor-pointer" />
+              <label className="" htmlFor="my_modal_6">
+                <FaRegEdit className="text-2xl text-blue-500 cursor-pointer" />
+              </label>
               <MdOutlineDelete className="text-2xl text-red-500 cursor-pointer" />
             </div>
+
+            {/* Update Button  */}
+            <ModelForm data="data" update={true} />
           </div>
           <div className="flex items-center gap-3 max-sm:w-full max-sm:justify-around max-sm:mt-5">
-            <h1 className="btn bg-blue-500 text-white hover:bg-blue-400 max-sm:btn-sm">
+            {/* <h1 className="btn bg-blue-500 text-white hover:bg-blue-400 max-sm:btn-sm">
               Add New Todo
-            </h1>
+            </h1> */}
+            <label
+              htmlFor="my_modal_7"
+              className="btn bg-blue-500 text-white hover:bg-blue-400 max-sm:btn-sm"
+            >
+              Add New Todo
+            </label>
+            <ModelAddTodo title="" desc="" add={true} h="my_modal_7" />
+
             <h1 className="btn bg-blue-500 text-white hover:bg-blue-400 max-sm:btn-sm">
               Save as gist
             </h1>
