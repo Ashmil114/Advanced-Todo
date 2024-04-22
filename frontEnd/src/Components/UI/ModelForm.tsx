@@ -1,33 +1,40 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { addProject, updateProject } from "../../API/APIServices";
 
 type ModelType = {
-  data: string;
+  data: { title: string; project_id: string };
   update: boolean;
+  userId?: number;
+  h: string;
 };
 
-const ModelForm = ({ data, update }: ModelType) => {
+const ModelForm = ({ data, update, userId, h }: ModelType) => {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
+  const [err, setErr] = useState("");
 
   useEffect(() => {
-    setInput(data);
-  }, []);
+    setInput(data.title);
+  }, [data]);
   //   call API For Create Projects here
-  const ProjectHandler = () => {
-    console.log(input);
-    setInput("");
-    navigate("/more/1");
+  const ProjectHandler = async () => {
+    if (!userId) return;
+    if (input.trim() === "") return alert("plz fill");
+    const res = await addProject(input, userId);
+    if (res.data.error) return setErr(res.data.error);
+    navigate(`/more/${res.data.project_id}`);
   };
 
   const ProjectUpdateHandler = () => {
-    console.log(input);
-    setInput(input);
+    updateProject(data.project_id, input).then(() => {
+      navigate(0);
+    });
   };
 
   return (
     <div>
-      <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+      <input type="checkbox" id={h} className="modal-toggle" />
       <div className="modal" role="dialog">
         <div className="modal-box ">
           <label className="form-control w-full ">
@@ -42,17 +49,17 @@ const ModelForm = ({ data, update }: ModelType) => {
               }}
             />
           </label>
-
+          <p className="text-error w-full text-center pt-3"> {err}</p>
           <div className="modal-action">
             <label
-              htmlFor="my_modal_6"
+              htmlFor={h}
               className="btn bg-red-500 hover:bg-red-400 text-white"
             >
               Close
             </label>
             {update ? (
               <label
-                htmlFor="my_modal_6"
+                htmlFor={h}
                 className="btn bg-blue-500 hover:bg-blue-400 text-white"
                 onClick={() => {
                   ProjectUpdateHandler();

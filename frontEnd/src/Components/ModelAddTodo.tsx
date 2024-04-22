@@ -1,15 +1,30 @@
 import { useEffect, useState } from "react";
+import { addTodos, updateTodo } from "../API/APIServices";
+import { useNavigate } from "react-router-dom";
 
 type ModelAdd = {
   title: string;
   desc: string;
   add: boolean;
   h: string;
+  todo_id: string;
+  checked: boolean;
+  project_id: string;
 };
 
-const ModelAddTodo = ({ title, desc, add, h }: ModelAdd) => {
+const ModelAddTodo = ({
+  title,
+  desc,
+  add,
+  h,
+  todo_id,
+  checked,
+  project_id,
+}: ModelAdd) => {
   const [Ttitle, setTitle] = useState("");
   const [Tdesc, setDesc] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTitle(title);
@@ -17,13 +32,19 @@ const ModelAddTodo = ({ title, desc, add, h }: ModelAdd) => {
   }, []);
 
   const AddHandler = () => {
-    console.log("Add");
+    if (Ttitle.trim() !== "")
+      addTodos(project_id, Ttitle, Tdesc).then(() => {
+        navigate(0);
+      });
+    else {
+      alert("plz fill");
+    }
   };
 
   const UpdateHandler = () => {
-    console.log(Ttitle, Tdesc);
-
-    console.log("Update");
+    updateTodo(todo_id, checked, Ttitle, Tdesc).then(() => {
+      navigate(0);
+    });
   };
 
   return (

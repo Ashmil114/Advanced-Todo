@@ -35,3 +35,55 @@ export const loginAPI = (username: string, password: string) => {
 export const getProject = () => {
   return API.get("projects");
 };
+
+export const addProject = (title: string, user_id: number) => {
+  return API.post("projects/", {
+    title,
+    user_id,
+  });
+};
+
+export const detailProject = (project_id: string) => {
+  return API.get(`projects/project-detail/${project_id}`);
+};
+
+export const updateProject = (project_id: string, title: string) => {
+  return API.put(`projects/project-detail/${project_id}`, {
+    project_id,
+    title,
+  });
+};
+
+export const deleteProject = (project_id: string) => {
+  return API.delete(`projects/project-detail/${project_id}`);
+};
+
+export const getTodos = () => {
+  return API.get("todos/");
+};
+
+export const addTodos = (
+  project_id: string,
+  heading: string,
+  description: string
+) => {
+  return API.post("todos/", { project_id, heading, description });
+};
+
+export const updateTodo = (
+  todo_id: string,
+  completion_status: boolean,
+  heading: string,
+  description: string
+) => {
+  return API.put(`todos/todo-detail/${todo_id}`, {
+    todo_id,
+    completion_status,
+    heading,
+    description,
+  });
+};
+
+export const deleteTodo = (todo_id: string) => {
+  return API.delete(`todos/todo-detail/${todo_id}`);
+};

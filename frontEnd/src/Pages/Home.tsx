@@ -1,7 +1,7 @@
 import { useCookies } from "react-cookie";
 import { ProjectList } from "../Components/ProjectList";
 import NavBar from "../Components/Shared/NavBar";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const Home = () => {
@@ -13,14 +13,17 @@ const Home = () => {
       navigate(`/`);
     }
   }, [token]);
-  const location = useLocation();
-
-  // console.log(location.state[0]);
+  let data = {
+    username: "",
+    user_id: Number(),
+  };
+  if (localStorage.getItem("res"))
+    data = JSON.parse(localStorage.getItem("res") || "");
 
   return (
     <div className="  ">
-      <NavBar name={location.state?.[1]} />
-      <ProjectList userId={location.state?.[0]} />
+      <NavBar name={data.username} />
+      <ProjectList userId={data.user_id} />
     </div>
   );
 };

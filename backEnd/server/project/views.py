@@ -23,9 +23,10 @@ class ProjectsView(APIView):
         
         if not Already_Added:
             project = Project.objects.create(title=title,owner=owner)
-            return Response('Project Created')
+            serializer = ProjectsSerializer(project)
+            return Response(serializer.data)
         else:
-            return Response('Project Already Existed as this name')
+            return Response({'error':'Project Already Existed as this name'})
         
 class ProjectView(APIView):
     def get(self, request, pk, format=None):
@@ -33,7 +34,7 @@ class ProjectView(APIView):
             _data = Project.objects.get(pk=pk)
             serializer = ProjectsSerializer(_data)
             return Response(serializer.data)
-        except Project.DoesNotExist:
+        except Project.DoesNotExist :
             return Response('Project Not Found this Name')
     
     def put(self, request, pk, format=None):

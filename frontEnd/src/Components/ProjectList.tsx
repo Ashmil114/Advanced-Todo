@@ -10,7 +10,7 @@ export const ProjectList = ({ userId }: { userId: number }) => {
 
   useEffect(() => {
     getProject().then((res) => {
-      setData(res.data);
+      setData(res.data.filter((d: any) => d.owner.id == userId));
     });
   }, []);
 
@@ -21,14 +21,19 @@ export const ProjectList = ({ userId }: { userId: number }) => {
         <div className="w-full flex justify-end mb-5 items-center gap-2">
           <label
             className="btn bg-blue-500 text-white hover:bg-blue-400"
-            htmlFor="my_modal_6"
+            htmlFor="my_modal_10"
           >
             New Project
           </label>
           {/* Project Add Button */}
-          <ModelForm data="" update={false} />
+          <ModelForm
+            data={{ project_id: "", title: "" }}
+            update={false}
+            userId={userId}
+            h="my_modal_10"
+          />
           <label
-            htmlFor="my_modal_6"
+            htmlFor="my_modal_10"
             data-tip="create new project"
             className="tooltip tooltip-primary text-white "
           >
@@ -38,30 +43,24 @@ export const ProjectList = ({ userId }: { userId: number }) => {
         <SideList userId={userId} />
       </div>
       {/* Card List */}
-      <div className="lg:w-[75%]">
+      <div className="lg:w-[75%] ">
         <div>
-          <h1 className="title">Recently Added</h1>
-          <div className=" grid md:grid-flow-col lg:grid-cols-3 lg:grid-rows-1 md:grid-col-2 md:grid-rows-2 gap-5 ">
-            {data
-              .filter((d) => d.owner.id == userId)
-              .map((item, index) => (
-                <>
-                  <ProjectCard
-                    key={index + 10}
-                    title={item.title}
-                    created_date={item.created_date}
-                  />
-                </>
-              ))}
-          </div>
-        </div>
-
-        <div>
-          <h1 className="title">Completed</h1>
-          <div className=" grid md:grid-flow-col lg:grid-cols-3 lg:grid-rows-1 md:grid-col-2 md:grid-rows-2 gap-5 ">
-            {/* <ProjectCard />
-            <ProjectCard />
-            <ProjectCard /> */}
+          {data.length !== 0 ? <h1 className="title">Projects</h1> : null}
+          <div className=" flex flex-wrap gap-5 lg:justify-start justify-center ">
+            {data.length === 0 ? (
+              <div className="w-full flex flex-col justify-center items-center h-[20rem]">
+                <p className="text-2xl font-semibold">No Project !</p>
+                <p className="text-sm text-slate-400">Add Projects</p>
+              </div>
+            ) : null}
+            {data.map((item, index) => (
+              <ProjectCard
+                key={index + 10}
+                title={item.title}
+                created_date={item.created_date}
+                project_id={item.project_id}
+              />
+            ))}
           </div>
         </div>
       </div>

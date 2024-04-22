@@ -13,15 +13,15 @@ const Login = () => {
 
   const [token, setToken] = useCookies(["my-token"]);
 
-  const [ruserID, setUserid] = useState<number>();
-  const [rname, setName] = useState("");
+  // const [ruserID, setUserid] = useState<number>();
+  // const [rname, setName] = useState("");
 
   useEffect(() => {
     if (!token["my-token"]) {
       navigate(`/`);
     } else {
       if (token["my-token"] != "undefined") {
-        navigate(`/home`, { state: [ruserID, rname] });
+        navigate(`/home`);
       }
     }
   }, [token]);
@@ -29,10 +29,11 @@ const Login = () => {
   const LoginHandler = () => {
     loginAPI(username, password)
       .then((res) => {
-        setUserid(res.user_id);
-        setName(res.username);
+        // setUserid(res.user_id);
+        // setName(res.username);
+        localStorage.setItem("res", JSON.stringify(res));
         setToken("my-token", res?.token);
-        navigate(`/home`, { state: [res.user_id, res.username] });
+        navigate(`/home`);
       })
       .catch((err) => setError(err));
   };
