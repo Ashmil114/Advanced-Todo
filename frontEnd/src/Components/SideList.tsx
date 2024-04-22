@@ -27,7 +27,11 @@ const SideList = ({ userId }: { userId: number }) => {
         ) : null}
         {data.map((item) => (
           <>
-            <SideListCard title={item.title} project_id={item.project_id} />
+            <SideListCard
+              title={item.title}
+              project_id={item.project_id}
+              created_date=""
+            />
           </>
         ))}
       </div>
