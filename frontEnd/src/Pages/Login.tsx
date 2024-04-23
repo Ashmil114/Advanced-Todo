@@ -85,7 +85,7 @@ const Login = () => {
                 required
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <label className="label  w-full py-5 ">
+              <label className="label  w-full py-5 flex flex-col ">
                 <a
                   href="#"
                   className="label-text-alt link link-hover text-end w-full "
@@ -93,7 +93,7 @@ const Login = () => {
                 >
                   {login ? "New User?" : "Login ?"}
                 </a>
-                <p>{error}</p>
+                <p className="text-error">{error}</p>
               </label>
             </div>
             <div className="form-control ">

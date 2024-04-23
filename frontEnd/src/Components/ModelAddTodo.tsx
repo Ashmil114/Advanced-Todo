@@ -32,7 +32,7 @@ const ModelAddTodo = ({
   }, []);
 
   const AddHandler = () => {
-    if (Ttitle.trim() !== "")
+    if (Ttitle.trim() !== "" && Tdesc.trim() !== "")
       addTodos(project_id, Ttitle, Tdesc).then(() => {
         navigate(0);
       });

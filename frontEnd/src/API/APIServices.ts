@@ -14,6 +14,25 @@ export const register = (username: string, password: string) => {
   });
 };
 
+// export const loginAPI = (username: string, password: string) => {
+//   return new Promise<{
+//     token: string;
+//     user_id: number;
+//     username: string;
+//   }>((resolve, reject) => {
+//     API.post("user/login", {
+//       username,
+//       password,
+//     }).then((res) => {
+//       console.log(res);
+
+//       if (res.statusText != "OK") return reject("User doesn't Exists");
+
+//       resolve(res.data);
+//     });
+//   });
+// };
+
 export const loginAPI = (username: string, password: string) => {
   return new Promise<{
     token: string;
@@ -23,12 +42,24 @@ export const loginAPI = (username: string, password: string) => {
     API.post("user/login", {
       username,
       password,
-    }).then((res) => {
-      if (res.data["non_field_errors"]?.length > 0)
-        return reject("User doesn't Exists");
+    })
+      .then((res) => {
+        console.log(res);
 
-      resolve(res.data);
-    });
+        if (res.statusText !== "OK") {
+          // Use 'reject' to handle the error case
+          reject("User doesn't exist");
+        } else {
+          resolve(res.data);
+        }
+      })
+      .catch((error) => {
+        // Handle any other errors (e.g., network issues)
+
+        if (error.message === "Request failed with status code 400") {
+          reject("User doesn't exist ! Please Sigup");
+        }
+      });
   });
 };
 
