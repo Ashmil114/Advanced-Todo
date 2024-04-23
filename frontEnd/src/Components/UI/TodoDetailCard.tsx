@@ -45,21 +45,29 @@ const TodoDetailCard = ({ project_id }: { project_id: string }) => {
 ## Pending Tasks
 ${todoData
   .filter((c: any) => c.completion_status === false)
-  .map((item: any) => `- [ ] ${item.heading}`)}
+  .map(
+    (item: any) => `
+- [ ] ${item.heading}
+  `
+  )}
 
 
 
 ## Completed Task
 ${todoData
   .filter((c: any) => c.completion_status === true)
-  .map((item: any) => `- [x] ${item.heading}`)}
+  .map(
+    (item: any) => `
+- [x] ${item.heading}
+  `
+  )}
 `;
 
-    const accessToken = "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";
+    const accessToken = "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";
 
     createGist(fileName, fileContent, accessToken)
       .then((gistUrl: any) => {
-        // console.log("Gist URL:", gistUrl);
+        console.log("Gist URL:", gistUrl);
         confirm(`Your Gist is Ready, Check Link ${gistUrl}`);
       })
       .catch((error: any) => {
