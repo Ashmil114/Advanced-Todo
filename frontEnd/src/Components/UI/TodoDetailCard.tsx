@@ -63,7 +63,7 @@ ${todoData
   )}
 `;
 
-    const accessToken = "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";
+    const accessToken = `${import.meta.env.VITE_REACT_APP_TOKEN}`;
 
     createGist(fileName, fileContent, accessToken)
       .then((gistUrl: any) => {
