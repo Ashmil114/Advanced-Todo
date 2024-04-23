@@ -1,30 +1,34 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## FrontEnd Set Up
+Navigate to the project directory:
+```bash
+cd frontEnd
 ```
+Follow these instructions to get a copy of the project up and running on your local machine.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Prerequisites
+
+Make sure you have the following installed on your machine:
+
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
+
+### Installation
+
+Install dependencies:
+
+```bash
+npm install
+```
+Start the development server:
+```bash
+npm run dev
+```
+## Setup .env 
+Create a .env.local file in the root directory and add a variable named VITE_REACT_APP_TOKEN, assigning it your github Token (otherwise save as gist doesn't work)
+
+The Output will be available at http://localhost:5173/ by default.
+
+Note : The Frontend Deployment not work properly because of the Backend don't deployed yet (so https://hatio.vercel.app/ only for sample)
+
+if You have any doubt please Connect with me (ashmilk114@gmail.com)
+### Thank You
