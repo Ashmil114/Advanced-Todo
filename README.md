@@ -1,5 +1,5 @@
 
-# Todo Website React Ts and Django Rest API
+# Todo Website By Using React ts and Django
 
 ## Getting Started
 
