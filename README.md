@@ -3,7 +3,7 @@
 
 ## Getting Started
 
-Follow these instructions to set up the virtual environment and run the Django Rest API on your local machine.
+Follow below instructions to set up 
 
 
 
@@ -80,5 +80,6 @@ npm run dev
 The Output will be available at http://localhost:5173/ by default.
 
 Note : The Frontend Deployment not work properly because of the Backend don't deployed yet (so https://hatio.vercel.app/ only for sample)
+
 if You have any doubt please Connect with me (ashmilk114@gmail.com)
 ### Thank You
