@@ -77,6 +77,9 @@ Start the development server:
 ```bash
 npm run dev
 ```
+## Setup .env 
+Create a .env.local file in the root directory and add a variable named VITE_REACT_APP_TOKEN, assigning it your github Token (otherwise save as gist doesn't work)
+
 The Output will be available at http://localhost:5173/ by default.
 
 Note : The Frontend Deployment not work properly because of the Backend don't deployed yet (so https://hatio.vercel.app/ only for sample)
