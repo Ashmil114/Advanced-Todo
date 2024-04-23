@@ -7,6 +7,7 @@ import ModelAddTodo from "../ModelAddTodo";
 import { useEffect, useState } from "react";
 import { deleteProject, detailProject, getTodos } from "../../API/APIServices";
 import { useNavigate } from "react-router-dom";
+import { createGist } from "../../Gist/Gist";
 
 const TodoDetailCard = ({ project_id }: { project_id: string }) => {
   const [data, setData] = useState<any>({});
@@ -31,6 +32,40 @@ const TodoDetailCard = ({ project_id }: { project_id: string }) => {
     const ch = todoData.filter((c: any) => c.completion_status === true).length;
     setCheckedLength(ch);
   }, [todoData]);
+
+  const GistHandler = () => {
+    const fileName = `${data.title}.md`;
+    // console.log(fileName);
+
+    const fileContent = `
+# ${data.title}
+
+- Summary ${checkedLength}/${todoData.length} todos completed
+
+## Pending Tasks
+${todoData
+  .filter((c: any) => c.completion_status === false)
+  .map((item: any) => `- [ ] ${item.heading}`)}
+
+
+
+## Completed Task
+${todoData
+  .filter((c: any) => c.completion_status === true)
+  .map((item: any) => `- [x] ${item.heading}`)}
+`;
+
+    const accessToken = "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";
+
+    createGist(fileName, fileContent, accessToken)
+      .then((gistUrl: any) => {
+        // console.log("Gist URL:", gistUrl);
+        confirm(`Your Gist is Ready, Check Link ${gistUrl}`);
+      })
+      .catch((error: any) => {
+        console.log("Error:", error.message);
+      });
+  };
 
   return (
     <div className="w-full flex justify-center items-center pb-10 ">
@@ -74,7 +109,10 @@ const TodoDetailCard = ({ project_id }: { project_id: string }) => {
               project_id={project_id}
             />
 
-            <h1 className="btn bg-blue-500 text-white hover:bg-blue-400 max-sm:btn-sm">
+            <h1
+              className="btn bg-blue-500 text-white hover:bg-blue-400 max-sm:btn-sm"
+              onClick={() => GistHandler()}
+            >
               Save as gist
             </h1>
           </div>
