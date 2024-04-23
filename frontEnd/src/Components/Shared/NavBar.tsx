@@ -8,7 +8,7 @@ const NavBar = ({ name }: NaveType) => {
   const token = useCookies(["my-token"]);
   return (
     <div className="navbar bg-base-100 dy-container h-[12%]">
-      <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+      <input type="checkbox" id={name} className="modal-toggle" />
       <div className="modal" role="dialog">
         <div className="modal-box ">
           <div className="flex justify-center items-center flex-col gap-5">
@@ -24,7 +24,7 @@ const NavBar = ({ name }: NaveType) => {
 
           <div className="modal-action">
             <label
-              htmlFor="my_modal_6"
+              htmlFor={name}
               className="btn btn-sm bg-blue-500 text-white hover:bg-blue-400"
             >
               Close!
@@ -61,7 +61,7 @@ const NavBar = ({ name }: NaveType) => {
             </li> */}
 
             <li>
-              <label htmlFor="my_modal_6" className="">
+              <label htmlFor={name} className="">
                 Profile
               </label>
             </li>

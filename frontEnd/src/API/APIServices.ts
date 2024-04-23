@@ -44,7 +44,7 @@ export const loginAPI = (username: string, password: string) => {
       password,
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
 
         if (res.statusText !== "OK") {
           // Use 'reject' to handle the error case
